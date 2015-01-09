@@ -21,11 +21,15 @@ class GameEngine
     end
   end
 
-  def evaluate_winner
+  def evaluate_winner(choice)
     case 
-      when player_choice('rock') && response == :scissors then :player
-      when player_choice('rock') && response == :paper then :computer
-      when player_choice('rock') && response == :rock then :draw
+      when choice == :rock && response == :scissors then :player
+      when choice == :rock && response == :paper then :computer
+      when choice == :rock && response == :rock then :draw
+
+      when choice == :paper && response == :rock then :player
+      when choice == :paper && response == :scissors then :computer
+      when choice == :paper && response == :paper then :draw
     end
   end
 
