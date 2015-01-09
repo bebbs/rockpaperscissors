@@ -1,3 +1,7 @@
+<% if @player %>
+  Welcome <%= @player.name %>!
+<% end %>
+
 <form action="/register" method="post">
   <label>Name:</label>
   <input type="text" name="name">
