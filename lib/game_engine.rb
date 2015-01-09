@@ -6,9 +6,9 @@ class GameEngine
 
   def response
     case chance
-      when 1 then 'Rock'
-      when 2 then 'Paper'
-      when 3 then 'Scissors'
+      when 1 then :rock
+      when 2 then :paper
+      when 3 then :scissors
     end
   end
 
@@ -18,6 +18,14 @@ class GameEngine
       when 'paper' then :paper
       when 'scissors' then :scissors
       else raise 'This input is not valid!'
+    end
+  end
+
+  def evaluate_winner
+    case 
+      when player_choice('rock') && response == :scissors then :player
+      when player_choice('rock') && response == :paper then :computer
+      when player_choice('rock') && response == :rock then :draw
     end
   end
 
