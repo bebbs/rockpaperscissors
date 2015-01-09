@@ -6,9 +6,17 @@ class GameEngine
 
   def response
     case chance
-      when 1 then "Rock"
-      when 2 then "Paper"
-      when 3 then "Scissors"
+      when 1 then 'Rock'
+      when 2 then 'Paper'
+      when 3 then 'Scissors'
+    end
+  end
+
+  def player_choice(choice)
+    case choice
+      when "rock" then :rock
+      when "paper" then :paper
+      when "scissors" then :scissors
     end
   end
 
