@@ -14,9 +14,10 @@ class GameEngine
 
   def player_choice(choice)
     case choice
-      when "rock" then :rock
-      when "paper" then :paper
-      when "scissors" then :scissors
+      when 'rock' then :rock
+      when 'paper' then :paper
+      when 'scissors' then :scissors
+      else raise 'This input is not valid!'
     end
   end
 

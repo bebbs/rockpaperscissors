@@ -23,15 +23,21 @@ describe GameEngine do
 
   context 'Can receive user input of' do
     it 'rock' do
-      expect(game.player_choice("rock")).to eq :rock
+      expect(game.player_choice('rock')).to eq :rock
     end
 
     it 'paper' do
-      expect(game.player_choice("paper")).to eq :paper
+      expect(game.player_choice('paper')).to eq :paper
     end
 
     it 'scissors' do
-      expect(game.player_choice("scissors")).to eq :scissors
+      expect(game.player_choice('scissors')).to eq :scissors
+    end
+  end
+
+  context 'Rejects' do
+    it 'invalid user input' do
+      expect{game.player_choice('banana')}.to raise_error(RuntimeError, 'This input is not valid!')
     end
   end
 
