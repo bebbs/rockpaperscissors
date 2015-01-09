@@ -9,7 +9,6 @@ describe Player do
     it 'have a name' do
       expect(player.name).to eq 'Josh'
     end
-
   end
 
 end
