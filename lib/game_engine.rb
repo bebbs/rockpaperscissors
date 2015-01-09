@@ -1,5 +1,11 @@
 class GameEngine
 
+  def initialize
+    @player_choice = nil
+  end
+
+  attr_reader :player_choice
+
   def chance
     rand(1..3)
   end
@@ -12,24 +18,36 @@ class GameEngine
     end
   end
 
-  def player_choice(choice)
-    case choice
-      when 'rock' then :rock
-      when 'paper' then :paper
-      when 'scissors' then :scissors
+  def player_select(input)
+    case input
+      when 'rock' then @player_choice = :rock
+      when 'paper' then @player_choice = :paper
+      when 'scissors' then @player_choice = :scissors
       else raise 'This input is not valid!'
     end
   end
 
-  def evaluate_winner(choice)
+  def evaluate_rock
     case 
-      when choice == :rock && response == :scissors then :player
-      when choice == :rock && response == :paper then :computer
-      when choice == :rock && response == :rock then :draw
+      when player_choice == :rock && response == :scissors then :player
+      when player_choice == :rock && response == :paper then :computer
+      when player_choice == :rock && response == :rock then :draw
+    end
+  end
 
-      when choice == :paper && response == :rock then :player
-      when choice == :paper && response == :scissors then :computer
-      when choice == :paper && response == :paper then :draw
+  def evaluate_paper
+    case
+      when player_choice == :paper && response == :rock then :player
+      when player_choice == :paper && response == :scissors then :computer
+      when player_choice == :paper && response == :paper then :draw
+    end
+  end
+      
+  def evaluate_scissors
+    case
+      when player_choice == :scissors && response == :paper then :player
+      when player_choice == :scissors && response == :rock then :computer
+      when player_choice == :scissors && response == :scissors then :draw
     end
   end
 
