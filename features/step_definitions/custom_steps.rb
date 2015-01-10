@@ -5,7 +5,7 @@ Given(/^I have registered as a player$/) do
 end
 
 Then(/^I should see the rock, paper, and scissor buttons$/) do
-  page.should have_content('Rock')
-  page.should have_content('Paper')
-  page.should have_content('Scissors')
+  page.should have_selector('button', text: 'Rock')
+  page.should have_selector('button', text: 'Paper')
+  page.should have_selector('button', text: 'Scissors')
 end

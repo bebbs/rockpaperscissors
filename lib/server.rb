@@ -12,10 +12,13 @@ class RockPaperScissors < Sinatra::Base
   post '/' do
     @name = params[:name]
     session[:player] = @name
-    erb :index
+    redirect '/play'
   end
 
-
+  get '/play' do
+    @name = session[:player]
+    erb :play
+  end
 
   # start the server if ruby file executed directly
   run! if app_file == $0
