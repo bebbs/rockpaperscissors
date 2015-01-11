@@ -5,6 +5,8 @@ class RockPaperScissors < Sinatra::Base
 
   enable :sessions
   set :views, Proc.new {File.join(root, '..', 'views')}
+  set :public_dir, Proc.new{File.join(root, '..', "public")}
+  set :public_folder, 'public'
 
   game = GameEngine.new
 
@@ -26,7 +28,7 @@ class RockPaperScissors < Sinatra::Base
   get '/winner' do
     @name = session[:player]
     @input = game.input(params[:choice])
-    @winner = game.evaluate_winner(params[:choice].to_sym)
+    @winner = game.evaluate_winner.to_sym
     erb :winner
   end
 
