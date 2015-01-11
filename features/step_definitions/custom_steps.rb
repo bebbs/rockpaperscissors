@@ -5,7 +5,15 @@ Given(/^I have registered as a player$/) do
 end
 
 Then(/^I should see the rock, paper, and scissor buttons$/) do
-  page.should have_selector('button', text: 'Rock')
-  page.should have_selector('button', text: 'Paper')
-  page.should have_selector('button', text: 'Scissors')
+  page.should have_selector('a', text: 'Rock')
+  page.should have_selector('a', text: 'Paper')
+  page.should have_selector('a', text: 'Scissors')
+end
+
+Given(/^I choose rock$/) do
+  click_link('Rock')
+end
+
+Then(/^I should see a result$/) do
+  page.should satisfy {|page| page.has_content?('Player wins!') || page.has_content?('Computer wins!') || page.has_content?('It\'s a draw!')}
 end

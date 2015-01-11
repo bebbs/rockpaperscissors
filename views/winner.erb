@@ -1,1 +1,5 @@
-<%= @name %> wins!
+<% if @winner == 'draw' %>
+  <h1>It's a draw!</h1>
+<% else %>
+  <h1><%= @winner.capitalize %> wins!</h1>
+<% end %>

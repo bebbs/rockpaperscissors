@@ -7,4 +7,7 @@ Feature: Playing a game
     Given I have registered as a player
     Then I should see the rock, paper, and scissor buttons
 
-  
+  Scenario: Playing the game
+    Given I have registered as a player
+    And I choose rock
+    Then I should see a result
