@@ -6,3 +6,5 @@ Feature: Playing a game
   Scenario: Seeing the game page
     Given I have registered as a player
     Then I should see the rock, paper, and scissor buttons
+
+  
