@@ -1,6 +1,6 @@
-Feature: Playing a game
+Feature: Playing a game against the computer
   In order to play Rock Paper Scissors
-  As a registered player
+  As a single player
   I want to make a choice
 
   Scenario: Seeing the game page
@@ -11,3 +11,8 @@ Feature: Playing a game
     Given I have registered as a player
     And I choose rock
     Then I should see a result
+
+  Scenario: Playing multiple games
+    Given I have played one game
+    And I press "Play Again"
+    Then I should see the game page
