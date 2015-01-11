@@ -30,3 +30,14 @@ Then(/^I should see the game page$/) do
   page.should have_content('Paper')
   page.should have_content('Scissors')
 end
+
+Given(/^I have registered for a multiplayer game$/) do
+  step 'I am on the homepage'
+  step 'I fill in "name" with "Josh"'
+  step 'I choose "Human"'
+  step 'I press "New Game"'
+end
+
+Then(/^I should see the waiting page$/) do
+  page.should have_content('Waiting for another player to join!')
+end

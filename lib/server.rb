@@ -17,7 +17,7 @@ class RockPaperScissors < Sinatra::Base
   post '/' do
     @name = params[:name]
     session[:player] = @name
-    redirect '/play'
+    (params[:opponent] == 'human') ? (redirect '/waiting') : (redirect '/play')
   end
 
   get '/play' do
@@ -30,6 +30,10 @@ class RockPaperScissors < Sinatra::Base
     @input = game.input(params[:choice])
     @winner = game.evaluate_winner.to_sym
     erb :winner
+  end
+
+  get '/waiting' do
+    erb :waiting
   end
 
   # start the server if ruby file executed directly

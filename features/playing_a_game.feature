@@ -1,6 +1,6 @@
 Feature: Playing a game against the computer
   In order to play Rock Paper Scissors
-  As a single player
+  As a lonely player
   I want to make a choice
 
   Scenario: Seeing the game page
