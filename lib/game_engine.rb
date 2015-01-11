@@ -31,4 +31,20 @@ class GameEngine
     end
   end
 
+  def evaluate_paper
+    case response
+      when :rock then :player
+      when :scissors then :computer
+      when :paper then :draw
+    end
+  end
+
+  def evaluate_scissors
+    case response
+      when :paper then :player
+      when :rock then :computer
+      when :scissors then :draw
+    end 
+  end
+
 end

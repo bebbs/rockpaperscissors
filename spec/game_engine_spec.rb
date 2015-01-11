@@ -61,4 +61,38 @@ describe GameEngine do
     end
   end
 
+  context 'When a player chooses paper' do
+    it 'they can win' do
+      allow(game).to receive(:response).and_return :rock
+      expect(game.evaluate_paper).to eq :player
+    end
+
+    it 'they can lose' do
+      allow(game).to receive(:response).and_return :scissors
+      expect(game.evaluate_paper).to eq :computer
+    end
+
+    it 'they can draw' do
+      allow(game).to receive(:response).and_return :paper
+      expect(game.evaluate_paper).to eq :draw
+    end
+  end
+
+  context 'When a player chooses scissors' do
+    it 'they can win' do
+      allow(game).to receive(:response).and_return :paper
+      expect(game.evaluate_scissors).to eq :player
+    end
+
+    it 'they can lose' do
+      allow(game).to receive(:response).and_return :rock
+      expect(game.evaluate_scissors).to eq :computer
+    end
+
+    it 'they can draw' do
+      allow(game).to receive(:response).and_return :scissors
+      expect(game.evaluate_scissors).to eq :draw
+    end
+  end
+
 end
