@@ -23,6 +23,14 @@ class GameEngine
     end
   end
 
+  def evaluate_winner(choice)
+    case choice
+      when :rock then evaluate_rock
+      when :paper then evaluate_paper
+      when :scissors then evaluate_scissors
+    end
+  end
+
   def evaluate_rock
     case response
       when :scissors then :player

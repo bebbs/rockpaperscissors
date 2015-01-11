@@ -25,8 +25,8 @@ class RockPaperScissors < Sinatra::Base
 
   get '/winner' do
     @name = session[:player]
-    game.input(params[:choice])
-    @winner = game.evaluate_rock.to_s
+    @input = game.input(params[:choice])
+    @winner = game.evaluate_winner(params[:choice].to_sym)
     erb :winner
   end
 
