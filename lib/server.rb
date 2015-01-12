@@ -1,7 +1,5 @@
 require 'sinatra/base'
 require_relative 'game_engine'
-require_relative 'multiplayer_engine'
-require_relative 'player'
 
 class RockPaperScissors < Sinatra::Base
 
@@ -11,7 +9,6 @@ class RockPaperScissors < Sinatra::Base
   set :public_folder, 'public'
 
   game = GameEngine.new
-  multiplayer_game = MultiplayerEngine.new
 
   get '/' do
     erb :index
@@ -20,7 +17,7 @@ class RockPaperScissors < Sinatra::Base
   post '/' do
     @name = params[:name]
     session[:player] = @name
-    (params[:opponent] == 'human') ? (redirect '/multiplayer') : (redirect '/play')
+    redirect '/play'
   end
 
   get '/play' do
@@ -28,26 +25,11 @@ class RockPaperScissors < Sinatra::Base
     erb :play
   end
 
-  get '/multiplayer' do
-    @name = session[:player]
-    @multiplayer_game = multiplayer_game
-    multiplayer_game.create_player(@name)
-    if !multiplayer_game.ready?
-      erb :waiting
-    else redirect '/multiplayer_page'
-    end
-  end
-
   get '/winner' do
     @name = session[:player]
     @input = game.input(params[:choice])
     @winner = game.evaluate_winner.to_sym
     erb :winner
-  end
-
-  get '/multiplayer_page' do
-    @name = session[:player]
-    erb :multiplayer_page
   end
 
   # start the server if ruby file executed directly
