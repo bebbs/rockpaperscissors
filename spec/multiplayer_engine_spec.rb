@@ -24,7 +24,7 @@ describe MultiplayerEngine do
     end
   end
 
-  context 'Playing the game' do
+  context 'Evaluating choices' do
     it 'should determine the winner when player1 chooses rock' do
       expect(game.evaluate_winner(:rock, :paper)).to eq :player2
       expect(game.evaluate_winner(:rock, :scissors)).to eq :player1

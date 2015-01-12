@@ -1,15 +1,15 @@
 <section class="text-center">
 <h1>Welcome <%= @name %>!</h1>
 
-<a href="/winner?choice=rock">
+<a href="/multiplayer_winner?choice=rock&player=<%= @name %>">
   <button class="btn btn-info">Rock
   </button>
 </a>
-<a href="/winner?choice=paper">
+<a href="/multiplayer_winner?choice=paper&player=<%= @name %>">
   <button class="btn btn-warning">Paper
   </button>
 </a>
-<a href="/winner?choice=scissors">
+<a href="/multiplayer_winner?choice=scissors&player=<%= @name %>">
   <button class="btn btn-danger">Scissors
   </button>
 </a>
