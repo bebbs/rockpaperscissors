@@ -1,6 +1,7 @@
 class GameEngine
 
   attr_reader :choice
+  attr_accessor :player_score, :computer_score
 
   def chance
     rand(1..3)
@@ -53,6 +54,14 @@ class GameEngine
       when :rock then :computer
       when :scissors then :draw
     end 
+  end
+
+  def player_score
+    @player_score = 0
+  end
+
+  def computer_score
+    @computer_score = 0
   end
 
 end
