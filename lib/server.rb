@@ -30,9 +30,10 @@ class RockPaperScissors < Sinatra::Base
 
   get '/multiplayer' do
     @name = session[:player]
+    @multiplayer_game = multiplayer_game
     multiplayer_game.create_player(@name)
     if !multiplayer_game.ready?
-      redirect '/waiting'
+      erb :waiting
     else redirect '/multiplayer_page'
     end
   end
@@ -44,14 +45,9 @@ class RockPaperScissors < Sinatra::Base
     erb :winner
   end
 
-  get '/waiting' do
-    @name = session[:player]
-    @multiplayer_game = multiplayer_game
-    erb :waiting
-  end
-
   get '/multiplayer_page' do
-    'Two players - ready to play!'
+    @name = session[:player]
+    erb :multiplayer_page
   end
 
   # start the server if ruby file executed directly
