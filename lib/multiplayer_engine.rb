@@ -1,10 +1,23 @@
 class MultiplayerEngine
   
-  def initialize(name1, name2)
-    @player1 = Player.new(name1)
-    @player2 = Player.new(name2)
+  def initialize
+    @player1 = nil
+    @player2 = nil
   end
 
-  attr_reader :player1, :player2
+  attr_accessor :player1, :player2
+
+  def create_player(name)
+    self.player1.nil? ? self.player1 = Player.new(name) : self.player2 = Player.new(name) unless has_two_players?
+  end
+
+  def ready?
+    has_two_players?
+  end
+
+  private
+    def has_two_players?
+      !player2.nil?
+    end
  
 end
