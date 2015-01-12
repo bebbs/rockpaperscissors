@@ -3,7 +3,6 @@ require 'multiplayer_engine'
 describe MultiplayerEngine do
   
   let(:game){MultiplayerEngine.new("Josh", "Dave")}
-  let(:first_player){player1}
 
   context 'Setting up' do
 
