@@ -2,11 +2,11 @@ require 'player'
 
 describe Player do
   
-  let(:player){Player.new("Josh")}
+  let(:player){Player.new('Josh')}
 
   context 'When creating a player' do
     it 'should have a name' do
-      expect(player.name).to eq "Josh"
+      expect(player.name).to eq 'Josh'
     end
 
     it 'should have a score' do
@@ -22,6 +22,13 @@ describe Player do
     it 'be reset' do
       player.reset_score
       expect(player.score).to eq 0
+    end
+  end
+
+  context 'Player can' do
+    it 'make a choice' do
+      player.choose('rock')
+      expect(player.choice).to eq :rock
     end
   end
 
