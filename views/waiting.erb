@@ -1,1 +1,13 @@
-Waiting for another player to join!
+<% if @multiplayer_game.ready? %>
+  <% redirect '/multiplayer_page' %>
+<% else %>
+  <script>
+    setTimeout(function(){
+      window.location.reload(1);
+    }, 5000);
+  </script>
+<% end %>
+
+<section class="text-center">
+  <h2>Waiting for another player to join!</h2>
+</section>

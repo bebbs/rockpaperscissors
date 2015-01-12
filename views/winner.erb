@@ -1,9 +1,11 @@
-<% if @winner == :draw %>
-  <h1>It's a draw!</h1>
-<% else %>
-  <h1><%= @winner.to_s.capitalize %> wins!</h1>
-<% end %>
+<section class="text-center">
+  <% if @winner == :draw %>
+    <h1>It's a draw!</h1>
+  <% else %>
+    <h1><%= @winner.to_s.capitalize %> wins!</h1>
+  <% end %>
 
-<a href="/play">
-  <button class="btn btn-primary">Play Again</button>
-</a>
+  <a href="/play">
+    <button class="btn btn-primary">Play Again</button>
+  </a>
+</section>

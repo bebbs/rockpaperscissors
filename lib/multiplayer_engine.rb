@@ -28,7 +28,7 @@ class MultiplayerEngine
       when player1_choice == :scissors && player2_choice == :rock then :player2
       when player1_choice == :scissors && player2_choice == :paper then :player1
       when player1_choice == :scissors && player2_choice == :scissors then :draw
-      else raise "Couldn\'t process selections - invalid choice"
+      else raise 'Couldn\'t process selections - invalid choice'
     end
   end
 

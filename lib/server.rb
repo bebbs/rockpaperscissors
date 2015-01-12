@@ -1,14 +1,17 @@
 require 'sinatra/base'
 require_relative 'game_engine'
+require_relative 'multiplayer_engine'
+require_relative 'player'
 
 class RockPaperScissors < Sinatra::Base
 
   enable :sessions
   set :views, Proc.new {File.join(root, '..', 'views')}
-  set :public_dir, Proc.new{File.join(root, '..', "public")}
+  set :public_dir, Proc.new {File.join(root, '..', 'public')}
   set :public_folder, 'public'
 
   game = GameEngine.new
+  multiplayer_game = MultiplayerEngine.new
 
   get '/' do
     erb :index
@@ -17,12 +20,21 @@ class RockPaperScissors < Sinatra::Base
   post '/' do
     @name = params[:name]
     session[:player] = @name
-    (params[:opponent] == 'human') ? (redirect '/waiting') : (redirect '/play')
+    (params[:opponent] == 'human') ? (redirect '/multiplayer') : (redirect '/play')
   end
 
   get '/play' do
     @name = session[:player]
     erb :play
+  end
+
+  get '/multiplayer' do
+    @name = session[:player]
+    multiplayer_game.create_player(@name)
+    if !multiplayer_game.ready?
+      redirect '/waiting'
+    else redirect '/multiplayer_page'
+    end
   end
 
   get '/winner' do
@@ -33,7 +45,13 @@ class RockPaperScissors < Sinatra::Base
   end
 
   get '/waiting' do
+    @name = session[:player]
+    @multiplayer_game = multiplayer_game
     erb :waiting
+  end
+
+  get '/multiplayer_page' do
+    'Two players - ready to play!'
   end
 
   # start the server if ruby file executed directly
